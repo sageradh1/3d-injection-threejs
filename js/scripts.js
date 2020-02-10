@@ -9,9 +9,9 @@ var camera = new THREE.PerspectiveCamera( cameraFov, aspect, nearpoint, farpoint
 
 
 var renderer = new THREE.WebGLRenderer({ alpha: true });
-// var renderer = new THREE.WebGLRenderer();
+ // var renderer = new THREE.WebGLRenderer();
 // renderer.setSize( window.innerWidth/2, window.innerHeight/2 );
-renderer.setSize( 1015, 576 );
+renderer.setSize( 1015, 600 );
 renderer.domElement.id = 'canvas_id'
 document.body.appendChild( renderer.domElement );
 
@@ -96,21 +96,78 @@ scene.add(ambientLight);
 
 
 // ------------------------------ CokeStart ------------------------------
+// var mtlLoader = new THREE.MTLLoader();
+// mtlLoader.setTexturePath('assets/objfiles/cokecup/');
+// mtlLoader.setPath('assets/objfiles/cokecup/');
+// mtlLoader.load('cup OBJ.mtl', function (materials) {
+
+//     materials.preload();
+
+//     var objLoader = new THREE.OBJLoader();
+//     objLoader.setMaterials(materials);
+//     objLoader.setPath('assets/objfiles/cokecup/');
+//     objLoader.load('cup OBJ.obj', function (object) {
+// 	    //object.position.set(object.position.x,object.position.y-300,object.position.z);
+// 	    object.position.set(0,0,0);	    
+// 	    console.log(object.position.x,object.position.y,object.position.z);
+
+// 	    // object.position.y = object.position.y+1000
+
+// 	    // object.scale.x = camera.position.z;
+// 	    // object.scale.z = camera.position.z;
+// 	    // object.scale.y = camera.position.z;
+
+// 		var bb = new THREE.Box3().setFromObject( object );
+// 		var object3DWidth  = bb.max.x - bb.min.x;
+// 		var object3DHeight = bb.max.y - bb.min.y;
+// 		var object3DDepth  = bb.max.z - bb.min.z;
+// 		console.log("Height :"+object3DHeight+" Width : "+object3DWidth+" Depth : "+object3DDepth)
+		
+// 		// object.scale.copy( new THREE.Vector3( 10, 10, 10);
+// 		// object.position.y = object.position.y-11
+// 	    // scene.add(object);
+
+// 	 	// -------------------------- Postion 1 --------------------------------
+// 	    // object.position.y = object.position.y-11
+// 	    // scene.add(object);
+
+// 	    // -------------------------- Postion 2 --------------------------------
+// 	    object.position.x = object.position.x-54
+// 	    object.position.y = object.position.y-13
+// 	    scene.add(object);
+
+// 		dist = object3DHeight / 2 / Math.tan(Math.PI * cameraFov / 360);
+// 		console.log("dist : "+dist)
+// 		// camera.position.z = dist;
+// 		var cameraPosition = new THREE.Vector3(
+// 			0,
+// 			0,
+// 			object.position.z + Math.abs( object3DDepth / Math.sin( cameraFov / 2 ) )
+// 		);
+// 		camera.position.copy( cameraPosition );
+// 		camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );      
+//     });
+// });
+// ------------------------------ CokeEnd ------------------------------
+
+
+
+
+// ------------------------------ DiorStart ------------------------------
 var mtlLoader = new THREE.MTLLoader();
-mtlLoader.setTexturePath('assets/objfiles/cokecup/');
-mtlLoader.setPath('assets/objfiles/cokecup/');
-mtlLoader.load('cup OBJ.mtl', function (materials) {
+mtlLoader.setTexturePath('assets/objfiles/Dior/Textures/');
+mtlLoader.setPath('assets/objfiles/Dior/Textures/');
+mtlLoader.load('Dior and Chanel samples.mtl', function (materials) {
 
     materials.preload();
 
-
     var objLoader = new THREE.OBJLoader();
     objLoader.setMaterials(materials);
-    objLoader.setPath('assets/objfiles/cokecup/');
-    objLoader.load('cup OBJ.obj', function (object) {
+    objLoader.setPath('assets/objfiles/Dior/');
+    objLoader.load('uploads_files_1991919_Dior+and+Chanel+samples.obj', function (object) {
 	    //object.position.set(object.position.x,object.position.y-300,object.position.z);
 	    object.position.set(0,0,0);	    
-	    console.log(object.position.x,object.position.y,object.position.z);
+	    
 
 	    // object.position.y = object.position.y+1000
 
@@ -124,25 +181,39 @@ mtlLoader.load('cup OBJ.mtl', function (materials) {
 		var object3DDepth  = bb.max.z - bb.min.z;
 		console.log("Height :"+object3DHeight+" Width : "+object3DWidth+" Depth : "+object3DDepth)
 		
-		// object.scale.copy( new THREE.Vector3( object3DHeight, object3DWidth, object3DDepth ) );
 
+	 	// -------------------------- Postion 1 --------------------------------
+	    object.position.y = object.position.y-45
+	    object.position.x = object.position.x-50
 	    scene.add(object);
+	    console.log(object.position.x,object.position.y,object.position.z);
+
+	    // -------------------------- Postion 2 --------------------------------
+	    // object.position.x = object.position.x-54
+	    // object.position.y = object.position.y-13
+	    // scene.add(object);
+
+
+
 		dist = object3DHeight / 2 / Math.tan(Math.PI * cameraFov / 360);
 		console.log("dist : "+dist)
 		// camera.position.z = dist;
-		var cameraPosition = new THREE.Vector3(
-			0,
-			0,
+		// var cameraPosition = new THREE.Vector3(
+		// 	0,
+		// 	0,
+		// 	object.position.z + Math.abs( object3DDepth / Math.sin( cameraFov / 2 ) )
+		// );
+
+				var cameraPosition = new THREE.Vector3(
+			-50,
+			-45,
 			object.position.z + Math.abs( object3DDepth / Math.sin( cameraFov / 2 ) )
 		);
 		camera.position.copy( cameraPosition );
-		camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );      
+		camera.lookAt( new THREE.Vector3( -50, -45, 0 ) );      
     });
 });
-
-// ------------------------------ CokeEnd ------------------------------
-
-
+// ------------------------------ DiorEnd ------------------------------
 
 
 var animate = function () {
